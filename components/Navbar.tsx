@@ -31,8 +31,17 @@ export default function Navbar() {
     };
   }, []);
 
-  const closeMenu = () => {
+  const scrollToSection = (id: string) => {
     setMenuOpen(false);
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
@@ -42,50 +51,55 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <a
-          href="#home"
-          onClick={closeMenu}
+        <button
+          type="button"
+          onClick={() => scrollToSection("home")}
           className="text-xl font-bold tracking-wide"
         >
           SAHIB TAJ SINGH
-        </a>
+        </button>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 text-sm md:flex">
-          <a
-            href="#home"
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
             className="transition-colors hover:text-slate-500"
           >
             Home
-          </a>
+          </button>
 
-          <a
-            href="#projects"
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
             className="transition-colors hover:text-slate-500"
           >
             Projects
-          </a>
+          </button>
 
-          <a
-            href="#about"
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
             className="transition-colors hover:text-slate-500"
           >
             About
-          </a>
+          </button>
 
-          <a
-            href="#experience"
+          <button
+            type="button"
+            onClick={() => scrollToSection("experience")}
             className="transition-colors hover:text-slate-500"
           >
             Experience
-          </a>
+          </button>
 
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
             className="transition-colors hover:text-slate-500"
           >
             Contact
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -102,11 +116,13 @@ export default function Navbar() {
                 menuOpen ? "translate-y-[4px] rotate-45" : ""
               }`}
             />
+
             <span
               className={`h-px w-full bg-black transition-opacity duration-200 ${
                 menuOpen ? "opacity-0" : "opacity-100"
               }`}
             />
+
             <span
               className={`h-px w-full bg-black transition-transform duration-300 ${
                 menuOpen ? "-translate-y-[4px] -rotate-45" : ""
@@ -123,45 +139,45 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col px-6 py-5">
-          <a
-            href="#home"
-            onClick={closeMenu}
-            className="border-b border-black/10 py-4 text-lg"
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            className="border-b border-black/10 py-4 text-left text-lg"
           >
             Home
-          </a>
+          </button>
 
-          <a
-            href="#projects"
-            onClick={closeMenu}
-            className="border-b border-black/10 py-4 text-lg"
+          <button
+            type="button"
+            onClick={() => scrollToSection("projects")}
+            className="border-b border-black/10 py-4 text-left text-lg"
           >
             Projects
-          </a>
+          </button>
 
-          <a
-            href="#about"
-            onClick={closeMenu}
-            className="border-b border-black/10 py-4 text-lg"
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
+            className="border-b border-black/10 py-4 text-left text-lg"
           >
             About
-          </a>
+          </button>
 
-          <a
-            href="#experience"
-            onClick={closeMenu}
-            className="border-b border-black/10 py-4 text-lg"
+          <button
+            type="button"
+            onClick={() => scrollToSection("experience")}
+            className="border-b border-black/10 py-4 text-left text-lg"
           >
             Experience
-          </a>
+          </button>
 
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="py-4 text-lg"
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="py-4 text-left text-lg"
           >
             Contact
-          </a>
+          </button>
         </div>
       </div>
     </nav>

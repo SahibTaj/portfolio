@@ -115,25 +115,28 @@ function Node({
       onMouseLeave={() => onHover(null)}
       onFocus={() => onHover(id)}
       onBlur={() => onHover(null)}
-      className={`group relative w-full border px-4 py-4 text-left transition-all duration-300 ${active
-        ? "border-black bg-black text-white"
-        : "border-black/15 bg-[#f7f7f5] text-black hover:border-black"
-        }`}
+      className={`group relative min-w-0 w-full border px-3 py-4 text-left transition-all duration-300 sm:px-4 ${
+        active
+          ? "border-black bg-black text-white"
+          : "border-black/15 bg-[#f7f7f5] text-black hover:border-black"
+      }`}
     >
       <span
-        className={`block text-[9px] tracking-[0.22em] transition-colors duration-300 ${active ? "text-white/50" : "text-slate-400"
-          }`}
+        className={`block truncate text-[9px] tracking-[0.18em] transition-colors duration-300 sm:tracking-[0.22em] ${
+          active ? "text-white/50" : "text-slate-400"
+        }`}
       >
         {node.meta}
       </span>
 
-      <span className="mt-1 block text-sm font-medium tracking-wide">
+      <span className="mt-1 block truncate text-sm font-medium tracking-wide">
         {node.label}
       </span>
 
       <span
-        className={`absolute right-3 top-3 h-1.5 w-1.5 rounded-full transition-all duration-300 ${active ? "bg-white" : "bg-black/20 group-hover:bg-black"
-          }`}
+        className={`absolute right-3 top-3 h-1.5 w-1.5 rounded-full transition-all duration-300 ${
+          active ? "bg-white" : "bg-black/20 group-hover:bg-black"
+        }`}
       />
     </button>
   );
@@ -141,12 +144,11 @@ function Node({
 
 function ArrowRight() {
   return (
-    <div className="relative flex w-7 shrink-0 items-center">
+    <div className="relative flex w-5 shrink-0 items-center sm:w-7">
       <span className="h-px w-full bg-black/20" />
 
       <span
-        className="absolute right-0
-          h-0 w-0
+        className="absolute right-0 h-0 w-0
           border-b-[4px] border-b-transparent
           border-l-[6px] border-l-black/40
           border-t-[4px] border-t-transparent"
@@ -157,12 +159,11 @@ function ArrowRight() {
 
 function ArrowLeft() {
   return (
-    <div className="relative flex w-7 shrink-0 items-center">
+    <div className="relative flex w-5 shrink-0 items-center sm:w-7">
       <span className="h-px w-full bg-black/20" />
 
       <span
-        className="absolute left-0
-          h-0 w-0
+        className="absolute left-0 h-0 w-0
           border-b-[4px] border-b-transparent
           border-r-[6px] border-r-black/40
           border-t-[4px] border-t-transparent"
@@ -174,10 +175,8 @@ function ArrowLeft() {
 function VerticalArrow() {
   return (
     <div className="relative h-12 w-px">
-      {/* vertical line */}
       <span className="absolute left-0 top-0 h-full w-px bg-black/20" />
 
-      {/* matching triangular arrowhead */}
       <span
         className="absolute bottom-0 left-1/2 h-0 w-0 -translate-x-1/2
           border-l-[4px] border-l-transparent
@@ -188,55 +187,71 @@ function VerticalArrow() {
   );
 }
 
-
 export default function Hero() {
   const [activeNode, setActiveNode] = useState<NodeKey | null>(null);
 
   const activeData = activeNode ? nodes[activeNode] : null;
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <section
       id="home"
-      className="flex min-h-[calc(100svh-80px)] items-center px-6 py-20 md:px-16"
+      className="flex min-h-[calc(100svh-80px)] items-center overflow-hidden px-6 py-20 md:px-16"
     >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      <div className="mx-auto grid w-full max-w-7xl min-w-0 items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+        {/* LEFT — HERO CONTENT */}
 
-        {/* =====================================================
-            LEFT — HERO CONTENT
-        ===================================================== */}
-
-        <div>
+        <div className="min-w-0">
           <p className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-gray-500 sm:text-sm">
             AI / ML Engineer
           </p>
 
-          <h1 className="max-w-5xl text-[clamp(3.5rem,10vw,8rem)] font-bold leading-[0.9] tracking-[-0.055em]">
+          <h1 className="max-w-full text-[clamp(3.5rem,7.2vw,6.5rem)] font-bold leading-[0.9] tracking-[-0.055em]">
             Building
             <br />
-            Intelligent
+            Production-
             <br />
-            Systems.
+            Grade
+            <br />
+            AI Systems.
           </h1>
 
-          <p className="mt-8 max-w-2xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8 md:text-xl">
-            I build practical AI systems across{" "}
+          <p className="mt-8 max-w-xl text-base leading-7 text-gray-600 sm:text-lg sm:leading-8">
+            I build intelligent systems across{" "}
             <strong className="text-black">LLMs</strong>,{" "}
             <strong className="text-black">RAG</strong>,{" "}
-            <strong className="text-black">computer vision</strong>, and{" "}
-            <strong className="text-black">machine learning</strong> — from
+            <strong className="text-black">Agentic AI</strong>,{" "}
+            <strong className="text-black">machine learning</strong> and{" "}
+            <strong className="text-black">computer vision</strong> — from
             experimentation to reliable deployment.
           </p>
 
+          <p className="mt-6 text-xs tracking-[0.16em] text-slate-500 sm:text-sm sm:tracking-[0.18em]">
+            LLM SYSTEMS · RAG · AGENTIC AI · ML · COMPUTER VISION
+          </p>
+
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#projects"
+            <button
+              type="button"
+              onClick={() => scrollToSection("projects")}
               className="group inline-flex items-center rounded-full bg-black px-7 py-4 text-sm font-medium text-white transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-slate-800 hover:shadow-[0_12px_30px_rgba(0,0,0,0.15)]"
             >
               View Projects
+
               <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
-            </a>
+            </button>
 
             <a
               href="https://github.com/SahibTaj"
@@ -245,6 +260,7 @@ export default function Hero() {
               className="group inline-flex items-center rounded-full border border-black/20 px-7 py-4 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-1 hover:border-black hover:bg-black hover:text-white hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)]"
             >
               GitHub
+
               <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
@@ -252,13 +268,10 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* =====================================================
-            RIGHT — PRODUCTION RAG ARCHITECTURE
-        ===================================================== */}
+        {/* RIGHT — PRODUCTION RAG ARCHITECTURE */}
 
-        <div className="hidden lg:block">
-          <div className="ml-auto w-full max-w-[580px]">
-
+        <div className="min-w-0 hidden lg:block">
+          <div className="ml-auto w-full min-w-0 max-w-[620px]">
             {/* HEADER */}
 
             <div className="mb-6 flex items-end justify-between border-b border-black/10 pb-5">
@@ -277,9 +290,7 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* =================================================
-                KNOWLEDGE PIPELINE
-            ================================================= */}
+            {/* KNOWLEDGE PIPELINE */}
 
             <div>
               <div className="mb-3 flex items-center justify-between">
@@ -292,8 +303,8 @@ export default function Hero() {
                 </span>
               </div>
 
-              <div className="flex items-center">
-                <div className="flex-1">
+              <div className="flex min-w-0 items-center">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="sources"
                     active={activeNode === "sources"}
@@ -303,7 +314,7 @@ export default function Hero() {
 
                 <ArrowRight />
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="ingestion"
                     active={activeNode === "ingestion"}
@@ -313,7 +324,7 @@ export default function Hero() {
 
                 <ArrowRight />
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="index"
                     active={activeNode === "index"}
@@ -323,36 +334,23 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* =================================================
-                REQUEST FLOW
-            ================================================= */}
+            {/* REQUEST FLOW */}
 
             <div className="my-8">
-
               <div className="mb-4 flex items-center gap-4">
                 <span className="h-px flex-1 bg-black/10" />
 
-                <span className="text-[9px] tracking-[0.28em] text-slate-400">
+                <span className="shrink-0 text-[9px] tracking-[0.28em] text-slate-400">
                   REQUEST FLOW
                 </span>
 
                 <span className="h-px flex-1 bg-black/10" />
               </div>
 
-              {/* =================================================
-                  ROW 1
+              {/* ROW 1 */}
 
-                  01 QUERY
-                       ↓
-                  02 CACHE
-                       ↓
-                  03 RETRIEVAL
-                       ↓
-            ================================================= */}
-
-              <div className="flex items-center">
-
-                <div className="flex-1">
+              <div className="flex min-w-0 items-center">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="query"
                     active={activeNode === "query"}
@@ -362,7 +360,7 @@ export default function Hero() {
 
                 <ArrowRight />
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="cache"
                     active={activeNode === "cache"}
@@ -372,23 +370,14 @@ export default function Hero() {
 
                 <ArrowRight />
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="retrieval"
                     active={activeNode === "retrieval"}
                     onHover={setActiveNode}
                   />
                 </div>
-
               </div>
-
-              {/* =================================================
-                  VERTICAL CONNECTION
-
-                  RETRIEVAL
-                      ↓
-                  RERANK
-            ================================================= */}
 
               {/* RETRIEVAL ↓ RERANK */}
 
@@ -398,19 +387,10 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* =================================================
-                  ROW 2
+              {/* ROW 2 */}
 
-                  07 ANSWER ← 06 LLM ← 05 CONTEXT ← 04 RERANK
-
-                  This intentionally runs RIGHT → LEFT.
-            ================================================= */}
-
-              <div className="flex items-center">
-
-                {/* 07 — ANSWER */}
-
-                <div className="flex-1">
+              <div className="flex min-w-0 items-center">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="answer"
                     active={activeNode === "answer"}
@@ -420,9 +400,7 @@ export default function Hero() {
 
                 <ArrowLeft />
 
-                {/* 06 — LLM */}
-
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="llm"
                     active={activeNode === "llm"}
@@ -432,9 +410,7 @@ export default function Hero() {
 
                 <ArrowLeft />
 
-                {/* 05 — CONTEXT */}
-
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="context"
                     active={activeNode === "context"}
@@ -444,16 +420,13 @@ export default function Hero() {
 
                 <ArrowLeft />
 
-                {/* 04 — RERANK */}
-
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="rerank"
                     active={activeNode === "rerank"}
                     onHover={setActiveNode}
                   />
                 </div>
-
               </div>
 
               <div className="mt-3 flex justify-end">
@@ -461,17 +434,12 @@ export default function Hero() {
                   RETRIEVE → RANK → GENERATE
                 </span>
               </div>
-
             </div>
 
-            {/* =================================================
-                QUALITY & SAFETY
-            ================================================= */}
+            {/* QUALITY & SAFETY */}
 
             <div className="border-t border-black/10 pt-5">
-
               <div className="mb-4 flex items-center justify-between">
-
                 <span className="text-[9px] tracking-[0.28em] text-slate-400">
                   QUALITY & SAFETY
                 </span>
@@ -479,12 +447,10 @@ export default function Hero() {
                 <span className="text-[9px] tracking-[0.2em] text-slate-300">
                   CONTINUOUS
                 </span>
-
               </div>
 
-              <div className="flex items-center gap-4">
-
-                <div className="flex-1">
+              <div className="flex min-w-0 items-center gap-4">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="evaluation"
                     active={activeNode === "evaluation"}
@@ -492,38 +458,29 @@ export default function Hero() {
                   />
                 </div>
 
-                <span className="text-[10px] text-slate-300">
+                <span className="shrink-0 text-[10px] text-slate-300">
                   +
                 </span>
 
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <Node
                     id="guardrails"
                     active={activeNode === "guardrails"}
                     onHover={setActiveNode}
                   />
                 </div>
-
               </div>
-
             </div>
 
-            {/* =================================================
-                HOVER DETAIL
-            ================================================= */}
+            {/* HOVER DETAIL */}
 
             <div className="mt-5 min-h-[92px] border-y border-black/10 py-4">
-
               {activeData ? (
-
                 <div className="flex gap-4">
-
                   <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-black" />
 
-                  <div>
-
+                  <div className="min-w-0">
                     <div className="mb-2 flex flex-wrap items-center gap-3">
-
                       <p className="text-xs font-medium tracking-[0.18em]">
                         {activeData.label}
                       </p>
@@ -531,35 +488,25 @@ export default function Hero() {
                       <span className="text-[9px] tracking-[0.2em] text-slate-400">
                         {activeData.meta}
                       </span>
-
                     </div>
 
                     <p className="max-w-xl text-sm leading-6 text-slate-500">
                       {activeData.description}
                     </p>
-
                   </div>
-
                 </div>
-
               ) : (
-
                 <div className="flex min-h-[58px] items-center">
-
                   <p className="text-xs text-slate-400">
                     Hover a component to inspect the system.
                   </p>
-
                 </div>
-
               )}
-
             </div>
 
             {/* FOOTER */}
 
             <div className="mt-5 flex items-center justify-between">
-
               <p className="text-[9px] tracking-[0.22em] text-slate-400">
                 RETRIEVAL · GENERATION · EVALUATION
               </p>
@@ -567,9 +514,7 @@ export default function Hero() {
               <p className="text-[9px] tracking-[0.22em] text-slate-300">
                 RAG SYSTEM
               </p>
-
             </div>
-
           </div>
         </div>
       </div>

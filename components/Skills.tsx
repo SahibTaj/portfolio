@@ -6,15 +6,18 @@ const skillGroups = [
     title: "LLM / GenAI",
     skills: [
       "LLM Applications",
-      "RAG Systems",
+      "RAG",
       "Generative AI",
-      "Fine-Tuning",
-      "Prompt Engineering",
       "AI Agents",
-      "Vector Databases",
+      "Prompt Engineering",
+      "Fine-Tuning",
+      "Transformers",
+      "Hugging Face",
+      "LangChain",
+      "LangGraph",
+      "CrewAI",
       "Embeddings",
-      "Retrieval Pipelines",
-      "Grounded Generation",
+      "Vector Search",
       "LLM Evaluation",
       "RAG Guardrails",
     ],
@@ -25,9 +28,13 @@ const skillGroups = [
     skills: [
       "Machine Learning",
       "Deep Learning",
+      "Scikit-learn",
       "PyTorch",
       "TensorFlow",
       "XGBoost",
+      "NumPy",
+      "Pandas",
+      "Feature Engineering",
       "Model Evaluation",
     ],
   },
@@ -36,24 +43,51 @@ const skillGroups = [
     title: "Computer Vision",
     skills: [
       "Object Detection",
-      "YOLO",
-      "Real-Time Inference",
-      "ONNX Runtime",
+      "YOLOv5/v8",
       "OpenCV",
+      "ByteTrack",
+      "ONNX Runtime",
+      "Real-Time Inference",
+      "Model Optimization",
+      "INT8 Quantization",
     ],
   },
   {
     number: "04",
-    title: "Backend & Data",
+    title: "Backend / MLOps",
     skills: [
       "Python",
       "FastAPI",
       "Flask",
+      "Uvicorn",
       "REST APIs",
-      "SQL",
-      "MySQL",
-      "Model Serving",
       "Docker",
+      "GitHub Actions",
+      "MLflow",
+      "CI/CD",
+      "Linux",
+      "Model Serving",
+    ],
+  },
+  {
+    number: "05",
+    title: "Data / Forecasting",
+    skills: [
+      "SQL",
+      "PostgreSQL",
+      "SQLite",
+      "FAISS",
+      "ChromaDB",
+      "Pinecone",
+      "Streamlit",
+      "Statsmodels",
+      "ARIMA",
+      "SARIMA",
+      "SARIMAX",
+      "PyMC",
+      "Bayesian Forecasting",
+      "Linear Regression",
+      "Hyperparameter Tuning",
     ],
   },
 ];
@@ -73,7 +107,8 @@ export default function Skills() {
 
           <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-600">
             The technologies and engineering areas I work with across
-            intelligent applications, machine learning, and AI systems.
+            intelligent applications, machine learning, and production AI
+            systems.
           </p>
         </div>
       </Reveal>

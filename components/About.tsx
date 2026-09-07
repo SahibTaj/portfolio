@@ -2,7 +2,7 @@ import Reveal from "./Reveal";
 
 export default function About() {
   return (
-    <section id="about" className="px-6 py-24 md:px-16 md:py-28">
+    <section id="about" className="px-6 py-20 md:px-16 md:py-24">
       <Reveal delay={0}>
         <div className="mb-16 md:mb-20">
           <p className="mb-6 text-sm tracking-[0.35em] text-slate-500">
@@ -21,22 +21,23 @@ export default function About() {
         <div className="grid gap-16 border-t border-slate-200 pt-12 md:grid-cols-[1fr_1fr]">
           <div>
             <p className="max-w-xl text-2xl leading-relaxed md:text-3xl">
-              I&apos;m an AI/ML engineer interested in building intelligent
-              systems that are practical, reliable, and useful beyond the
-              prototype.
+              I&apos;m a machine learning engineer focused on building
+              practical AI systems — particularly LLM applications, RAG,
+              agentic AI, and production-oriented machine learning systems.
             </p>
           </div>
 
           <div className="space-y-8 text-lg leading-8 text-slate-600">
             <p>
-              My work focuses primarily on LLM and GenAI systems, including
-              RAG, evaluation, fine-tuning, and AI applications.
+              My work spans LLM and GenAI systems, including retrieval,
+              evaluation, fine-tuning, and AI agents, with an emphasis on
+              building systems that are reliable beyond the initial prototype.
             </p>
 
             <p>
-              I also work across machine learning, computer vision, and
-              backend engineering, with an emphasis on turning models into
-              usable software systems.
+              I also work across machine learning, computer vision, backend
+              engineering, and MLOps, focusing on the engineering problems
+              involved in turning models into usable software systems.
             </p>
 
             <p>

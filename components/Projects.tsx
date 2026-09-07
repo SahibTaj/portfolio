@@ -6,9 +6,10 @@ const projects = [
     title: "Edge AI Inference Engine",
     status: "COMPLETED",
     description:
-      "A real-time computer vision inference system focused on efficient model execution and deployment on edge devices.",
+      "A CPU-only real-time computer vision inference engine designed for low-latency edge deployment, reaching ~27 FPS using ONNX Runtime, INT8 quantization, batching, and a multi-threaded pipeline.",
     category: "COMPUTER VISION",
-    stack: "Python · YOLO · OpenCV · ONNX",
+    stack:
+      "Python · YOLOv5/v8 · OpenCV · ONNX Runtime · INT8 · Multithreading",
     href: "https://github.com/SahibTaj/Edge-AI-Real-Time-Inference-Engine-Latency-Aware-Runtime-",
   },
   {
@@ -16,9 +17,10 @@ const projects = [
     title: "Regression-Safe RAG",
     status: "COMPLETED",
     description:
-      "An evaluation and deployment-gating platform designed to detect regressions in RAG systems when prompts, models, retrieval, or data change.",
+      "An evaluation and deployment-gating platform for RAG systems that measures faithfulness and answer coverage using a dual-model evaluation pipeline, reducing evaluation cost by 10–20× while blocking quality regressions.",
     category: "LLM / RAG",
-    stack: "RAG · LLM Evaluation · Retrieval",
+    stack:
+      "RAG · LLM Evaluation · ChromaDB · Groq API · Streamlit · Guardrails",
     href: "https://github.com/SahibTaj/Regression-Safe-RAG-Guardrails-Evaluation-Platform",
   },
   {
@@ -26,9 +28,10 @@ const projects = [
     title: "KnowledgeHub AI",
     status: "IN PROGRESS",
     description:
-      "An enterprise knowledge system focused on helping users retrieve and work with information across internal knowledge sources.",
+      "An enterprise knowledge copilot focused on retrieving and working with information across internal knowledge sources using retrieval, vector search, and LLM-based generation.",
     category: "LLM / GENAI",
-    stack: "Python · RAG · Vector Search · LLMs",
+    stack:
+      "Python · RAG · Vector Search · LLMs · Retrieval · Knowledge Systems",
     href: "https://github.com/SahibTaj/KnowledgeHub-AI",
   },
   {
@@ -36,16 +39,17 @@ const projects = [
     title: "Domain-Specific LLM Fine-Tuning",
     status: "IN PROGRESS",
     description:
-      "A fine-tuning project focused on adapting language models to specialized tasks and domain-specific requirements.",
+      "A fine-tuning project focused on adapting pretrained transformer models to specialized NLP tasks and domain-specific requirements.",
     category: "LLM / GENAI",
-    stack: "Python · Transformers · Fine-Tuning",
+    stack:
+      "Python · PyTorch · Transformers · Hugging Face · Fine-Tuning",
     href: "https://github.com/SahibTaj/sentiment-fine-tuning-",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-6 py-24 md:px-16 md:py-28">
+    <section id="projects" className="px-6 py-20 md:px-16 md:py-24">
       <Reveal delay={0}>
         <div className="mb-16 md:mb-20">
           <p className="mb-6 text-sm tracking-[0.35em] text-slate-500">
@@ -93,7 +97,7 @@ export default function Projects() {
                     {project.description}
                   </p>
 
-                  <p className="mt-6 text-sm text-slate-400 transition-colors duration-300 group-hover:text-slate-600">
+                  <p className="mt-6 text-sm leading-6 text-slate-400 transition-colors duration-300 group-hover:text-slate-600">
                     {project.stack}
                   </p>
                 </div>

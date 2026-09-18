@@ -21,7 +21,7 @@ const projects = [
     category: "LLM / RAG",
     stack:
       "RAG · LLM Evaluation · ChromaDB · Groq API · Streamlit · Guardrails",
-    href: "https://github.com/SahibTaj/Regression-Safe-RAG-Guardrails-Evaluation-Platform",
+    href: "https://github.com/SahibTaj/Regression-Safe-RAG-Deployment-Guardrails",
   },
   {
     number: "03",
